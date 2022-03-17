@@ -26,20 +26,9 @@
           </var-col>
         </var-row>
       </div>
-      <wy-play-list-item-rc
-        v-ripple="{ color: '#aaa' }"
-        class="song-class"
-        v-for="item in data"
-        :key="item['id']"
-        :showImgPlay="false"
-        :src="item['al']['picUrl']"
-        :name="item['name']"
-        :detail="item['ar']"
-        :album="item['al']['name']"
-        :privilege="item['privilege']"
-        albumPosition="bottom"
-        @click="music(item['id'])"
-      />
+      <wy-play-list-item-rc v-ripple="{ color: '#aaa' }" class="song-class" v-for="item in data" :key="item['id']"
+        :showImgPlay="false" :src="item['al']['picUrl']" :name="item['name']" :detail="item['ar']"
+        :album="item['al']['name']" :privilege="item['privilege']" albumPosition="bottom" @click="music(item['id'])" />
     </div>
   </div>
 </template>
@@ -107,7 +96,7 @@ const music = (id: number) => {
   position: relative;
   z-index: 101;
   background-color: white;
-  height: 100vh;
+  min-height: 100vh;
 }
 .container {
   height: 200px;

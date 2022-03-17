@@ -8,22 +8,17 @@
             {{ add() }}
           </div>
         </div>
-        <div class="main">
+        <div class="main" @click="show=!show">
           <div class="image" v-show="show">
             <var-image :src="player" width="235" />
             <var-image :src="data.al.picUrl" width="140" radius="100" />
           </div>
           <div v-show="!show" class="lrc">
-            <div
-              :class="{
+            <div :class="{
                 color:
                   currentTime >= lrcTime[index] &&
                   currentTime < lrcTime[index + 1],
-              }"
-              :style="{ top: textTop + 'px' }"
-              v-for="(item, index) in lrc"
-              :key="index"
-            >
+              }" :style="{ top: textTop + 'px' }" v-for="(item, index) in lrc" :key="index">
               {{ item }}
             </div>
           </div>
@@ -36,15 +31,10 @@
       <div class="point">
         <var-row align="center">
           <var-col span="4">
-            <span>{{ filterTime(currentTime) }}</span></var-col
-          >
+            <span>{{ filterTime(currentTime) }}</span>
+          </var-col>
           <var-col span="16" class="progress">
-            <div
-              class="drag"
-              @touchmove="touchmoves"
-              @touchend="touchend"
-              :style="{ left: dragLeft + '%' }"
-            ></div>
+            <div class="drag" @touchmove="touchmoves" @touchend="touchend" :style="{ left: dragLeft + '%' }"></div>
             <div ref="progressRef">
               <var-progress :value="progressValue"></var-progress>
             </div>
@@ -56,60 +46,26 @@
       </div>
     </div>
     <div class="play">
-      <var-icon
-        v-if="!likeShow"
-        name="heart-outline"
-        size="24"
-        color="#e29f3e"
-        @Click="likeMusic(true)"
-      />
-      <var-icon
-        v-else
-        name="heart"
-        size="24"
-        color="#e29f3e"
-        @Click="likeMusic(false)"
-      />
+      <var-icon v-if="!likeShow" name="heart-outline" size="24" color="#e29f3e" @Click="likeMusic(true)" />
+      <var-icon v-else name="heart" size="24" color="#e29f3e" @Click="likeMusic(false)" />
       <div class="play-stop">
         <div v-show="playShow" @click="playSong(true)">
-          <svg
-            t="1646468380724"
-            class="icon"
-            viewBox="0 0 1024 1024"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            p-id="4640"
-            width="41"
-            height="41"
-          >
+          <svg t="1646468380724" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="4640" width="41" height="41">
             <path
               d="M512 1024A512 512 0 1 1 512 0a512 512 0 0 1 0 1024z m3.008-92.992a416 416 0 1 0 0-832 416 416 0 0 0 0 832zM383.232 287.616l384 224.896-384 223.104v-448z"
-              fill="#e6e6e6"
-              p-id="4641"
-            ></path>
+              fill="#e6e6e6" p-id="4641"></path>
           </svg>
         </div>
         <div v-show="!playShow" @click="playSong(false)">
-          <svg
-            t="1646468340738"
-            class="icon"
-            viewBox="0 0 1024 1024"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            p-id="3786"
-            width="42"
-            height="42"
-          >
+          <svg t="1646468340738" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            p-id="3786" width="42" height="42">
             <path
               d="M413.866667 320c-17.066667 0-32 14.933333-32 32v320c0 17.066667 14.933333 32 32 32s32-14.933333 32-32v-320c0-17.066667-14.933333-32-32-32zM605.866667 320c-17.066667 0-32 14.933333-32 32v320c0 17.066667 14.933333 32 32 32s32-14.933333 32-32v-320c0-17.066667-14.933333-32-32-32z"
-              fill="#e6e6e6"
-              p-id="3787"
-            ></path>
+              fill="#e6e6e6" p-id="3787"></path>
             <path
               d="M509.866667 32C245.333333 32 32 247.466667 32 512s213.333333 480 477.866667 480S987.733333 776.533333 987.733333 512 774.4 32 509.866667 32z m0 896C281.6 928 96 742.4 96 512S281.6 96 509.866667 96 923.733333 281.6 923.733333 512s-185.6 416-413.866666 416z"
-              fill="#e6e6e6"
-              p-id="3788"
-            ></path>
+              fill="#e6e6e6" p-id="3788"></path>
           </svg>
         </div>
       </div>
@@ -146,7 +102,7 @@ const src = ref("");
 const audioRef = ref(null);
 const duration = ref<string | number>(""); //总时间
 const currentTime = ref<string | number>(""); //当前时间
-const show = ref(false); //歌词封面切换
+const show = ref(true); //歌词封面切换
 const lrc = ref<string[] | number[]>([]); //歌词
 const lrcTime = ref<string[] | number[]>([]);
 const progressValue = ref(0); //进度条
@@ -429,7 +385,7 @@ onUnmounted(() => {
   line-height: 30px;
   transition: all 1s ease;
   position: relative;
-  width: 50vw;
+  width: 70vw;
   display: flex;
   justify-content: center;
   word-break: break-all;

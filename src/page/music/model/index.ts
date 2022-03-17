@@ -39,7 +39,7 @@ export function songDetail(id: number | string | string[]) {
  * @returns
  */
 export function likeList(uid: string | null) {
-  let time = Date.now();
+  const time = Date.now();
 
   return Request.axiosInstance({
     method: "GET",
@@ -54,7 +54,7 @@ export function likeList(uid: string | null) {
  * @returns
  */
 export function likeMusic(uid: string | string[], like: boolean) {
-  let time = Date.now();
+  const time = Date.now();
 
   return Request.axiosInstance({
     method: "GET",
