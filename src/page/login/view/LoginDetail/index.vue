@@ -3,13 +3,7 @@
     <div v-if="!regShow">
       <var-app-bar title="手机号登录" color="white" :elevation="false">
         <template #left>
-          <var-button
-            round
-            text
-            color="transparent"
-            text-color="black"
-            @click="goBack"
-          >
+          <var-button round text color="transparent" text-color="black" @click="goBack">
             <var-icon name="window-close" :size="24" />
           </var-button>
         </template>
@@ -39,9 +33,7 @@
                 <span class="block">{{ timeData.seconds }}</span>
               </template>
             </var-countdown>
-            <span class="reload" @click="nextOne" v-show="!reloadShow"
-              >重新获取</span
-            >
+            <span class="reload" @click="nextOne" v-show="!reloadShow">重新获取</span>
           </div>
           <div class="valid">
             <var-input v-model.trim="valide" @input="validChange" />
@@ -147,7 +139,7 @@ const validChange = () => {
                 localStorage.setItem("uid", res.data.account.id);
                 tipReload("登陆成功!");
                 showLoading.value = false;
-                router.push({
+                router.replace({
                   name: "home",
                 });
               }

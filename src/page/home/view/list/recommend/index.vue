@@ -72,6 +72,7 @@ if (document.cookie.match(/token/)) {
   request();
 } else {
   store.commit("showSnackbar", "需要登录");
+  router.back();
 }
 
 const music = (id: number) => {

@@ -1,13 +1,7 @@
 <template>
   <var-app-bar title="昵称编辑" color="white" :elevation="false">
     <template #left>
-      <var-button
-        round
-        text
-        color="transparent"
-        text-color="black"
-        @click="goBack"
-      >
+      <var-button round text color="transparent" text-color="black" @click="goBack">
         <var-icon name="chevron-left" :size="24" />
       </var-button>
     </template>
@@ -76,7 +70,7 @@ const reg = () => {
               store.commit("configUserId", res.data.account.id);
               tipReload("注册成功!");
               showLoading.value = false;
-              router.push({
+              router.replace({
                 name: "home",
               });
             }
