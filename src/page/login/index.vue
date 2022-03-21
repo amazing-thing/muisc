@@ -1,8 +1,8 @@
 <template>
   <div class="bg">
-    <var-image class="title" :src="title" width="60%" />
+    <var-image class="title" :src="require('../../assets/title.png')" width="60%" />
     <div class="bar-container">
-      <var-image class="bar" :src="bar" />
+      <var-image class="bar" :src="require('../../assets/bar.png')" />
       <div class="ctn">此项目仅以学习为目的,请支持正版</div>
     </div>
     <div v-if="cookie">
@@ -20,8 +20,6 @@
 </template>
 
 <script setup lang="ts">
-import title from "../../assets/title.png";
-import bar from "../../assets/bar.png";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 

@@ -11,7 +11,6 @@
 </template>
 
 <script setup lang="ts">
-import rili from "../../../../assets/rili.png";
 // import gedan from "../../../../assets/gedan.png";
 // import paihangbang from "../../../../assets/paihangbang.png";
 // import sanyecao from "../../../../assets/sanyecao.png";
@@ -24,7 +23,7 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 const data = [
-  { title: "每日推荐", src: rili, name: "recommend" },
+  { title: "每日推荐", src: require('../../../../assets/rili.png'), name: "recommend" },
   // { title: "私人FM", src: shouyinjin, name: "recommond" },
   // { title: "歌单", src: gedan, name: "recommond" },
   // { title: "排行榜", src: paihangbang, name: "recommond" },

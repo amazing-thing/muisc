@@ -11,7 +11,7 @@
             'right-corner': iconPosition === 'right-corner',
           },
         ]"
-        :src="triangle2"
+        :src="require('../../../assets/triangle2.png')"
         width="17"
         height="17"
       />
@@ -45,7 +45,6 @@
 </template>
 
 <script setup lang="ts">
-import triangle2 from "../../../assets/triangle2.png";
 type detailType = { name: string; id: number };
 type privilegeType = { fee: number; maxbr: number };
 

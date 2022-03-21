@@ -7,7 +7,7 @@
     </template>
   </var-app-bar>
   <div class="center">
-    <var-image :src="Reg" width="150" height="150" />
+    <var-image :src="require('../../../../assets/reg.png')" width="150" height="150" />
     <div>你希望大家怎么称呼你呢？</div>
   </div>
   <div class="input">
@@ -28,7 +28,6 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { register, loginCellphone } from "../../model/index";
-import Reg from "../../../../assets/reg.png";
 import { useStore } from "vuex";
 
 const props = defineProps<{

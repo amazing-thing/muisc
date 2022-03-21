@@ -17,7 +17,7 @@
               <var-image :src="playlist?.coverImgUrl" radius="10%" />
               <div class="playCount" v-if="show">
                 <div class="pic">
-                  <var-image :src="triangle" width="9" height="9" />
+                  <var-image :src="require('../../../../../assets/triangle.png')" width="9" height="9" />
                 </div>
                 <span style="margin-right: 3px">{{
                   filterCount(playlist.playCount)
@@ -27,36 +27,15 @@
             <var-col :span="changeL" offset="1" class="center">
               <div class="name">
                 <span>{{ playlist.name }}</span>
-                <var-icon
-                  name="chevron-down"
-                  :size="26"
-                  color="#ffffff"
-                  @click="click"
-                  v-if="show"
-                />
-                <var-icon
-                  v-else
-                  name="chevron-up"
-                  :size="26"
-                  color="#ffffff"
-                  @click="click"
-                />
+                <var-icon name="chevron-down" :size="26" color="#ffffff" @click="click" v-if="show" />
+                <var-icon v-else name="chevron-up" :size="26" color="#ffffff" @click="click" />
               </div>
               <div class="btn" v-if="show">
                 <div class="nickname">
-                  <var-image
-                    :src="playlist.creator.avatarUrl"
-                    radius="50%"
-                    width="24"
-                    height="24"
-                  />
+                  <var-image :src="playlist.creator.avatarUrl" radius="50%" width="24" height="24" />
                   <span>{{ playlist.creator.nickname }}</span>
                 </div>
-                <div
-                  class="description"
-                  v-ripple="{ color: '#aaa' }"
-                  @click="descriptShow = true"
-                >
+                <div class="description" v-ripple="{ color: '#aaa' }" @click="descriptShow = true">
                   <div class="detail" v-if="playlist.description">
                     {{ playlist.description + "" }}
                   </div>
@@ -69,17 +48,8 @@
           <div class="related" v-if="!show">
             <div class="name">相关歌单推荐</div>
             <var-row :gutter="10" class="row">
-              <wy-play-list-item
-                v-for="item in relatedData"
-                :key="item.id"
-                :src="item.coverImgUrl"
-                :name="item.name"
-                :showPlayCount="false"
-                width="90"
-                height="90"
-                :textMore="false"
-                @click="push(item.id)"
-              />
+              <wy-play-list-item v-for="item in relatedData" :key="item.id" :src="item.coverImgUrl" :name="item.name"
+                :showPlayCount="false" width="90" height="90" :textMore="false" @click="push(item.id)" />
             </var-row>
           </div>
 
@@ -106,20 +76,11 @@
     <div v-if="playlist">
       <more :trackCount="playlist.trackCount" />
 
-      <song
-        :id="route.params.id"
-        :data="playlist.tracks.slice(0, 5)"
-        :privileges="privileges"
-        :trackCount="playlist.trackCount"
-      />
+      <song :id="route.params.id" :data="playlist.tracks.slice(0, 5)" :privileges="privileges"
+        :trackCount="playlist.trackCount" />
 
-      <descript
-        v-model:show="descriptShow"
-        :name="playlist.name"
-        :description="playlist.description"
-        :tags="playlist.tags"
-        :coverImgUrl="playlist.coverImgUrl"
-      />
+      <descript v-model:show="descriptShow" :name="playlist.name" :description="playlist.description"
+        :tags="playlist.tags" :coverImgUrl="playlist.coverImgUrl" />
     </div>
   </div>
 </template>
@@ -128,7 +89,6 @@
 import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import Model from "../../../model/index";
-import triangle from "../../../../../assets/triangle.png";
 import { filterCount } from "../../../../../utils/index";
 import More from "./more.vue";
 import Song from "./song.vue";

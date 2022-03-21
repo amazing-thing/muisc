@@ -11,7 +11,7 @@
       </div>
       <div class="playCount" v-if="showPlayCount">
         <div class="pic">
-          <var-image :src="triangle" width="9" height="9" />
+          <var-image :src="require('../../../assets/triangle.png')" width="9" height="9" />
         </div>
         <span style="margin-right: 3px">{{ filterCount(playCount) }}</span>
       </div>
@@ -21,7 +21,6 @@
 
 <script setup lang="ts">
 import { filterCount } from "../../../utils/index";
-import triangle from "../../../assets/triangle.png";
 
 const props = withDefaults(
   defineProps<{

@@ -10,7 +10,7 @@
         </div>
         <div class="main" @click="show=!show">
           <div class="image" v-show="show">
-            <var-image :src="player" width="235" />
+            <var-image :src="require('../../../assets/player-disc.png')" width="235" />
             <var-image :src="data.al.picUrl" width="140" radius="100" />
           </div>
           <div v-show="!show" class="lrc">
@@ -78,7 +78,6 @@ import model, { music } from "../model/index";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 import { onMounted, onUnmounted, ref } from "vue";
-import player from "../../../assets/player-disc.png";
 import { filterTime, filterMusic } from "../../../utils/index";
 
 type arType = {
