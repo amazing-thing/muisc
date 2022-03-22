@@ -35,16 +35,18 @@ export function checkMusic(id: number) {
 //过滤歌词
 export function filterMusic(str: string) {
   const strs = str.split("\n");
+
   const data: number[] = [];
   const result: string[] = [];
   const reg = new RegExp(/\[(\d\d):(\d\d)\.\d\d\d?\]/);
 
   strs.forEach((item) => {
-    result.push(item.replace(reg, ""));
-    ///如何化简
-    data.push(Number(Number(RegExp.$1) * 60) + Number(RegExp.$2));
+    if (item.replace(reg, "") !== '') {
+      result.push(item.replace(reg, ""));
+      ///如何化简
+      data.push(Number(Number(RegExp.$1) * 60) + Number(RegExp.$2));
+    }
   });
-
 
   return [result, data];
 }
