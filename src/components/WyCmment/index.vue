@@ -13,9 +13,7 @@
             <div class="time">{{ time }}</div>
           </div>
           <div class="right" @click="lickClick">
-            <div class="like" v-show="likeC">
-              {{ filterCount(likeC, 1) }}
-            </div>
+            <div class="like" v-show="likeC">{{ filterCount(likeC, 1) }}</div>
             <var-icon name="star-outline" v-show="!like" />
             <var-icon name="star" color="red" v-show="like" />
           </div>

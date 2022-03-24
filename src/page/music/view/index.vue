@@ -113,7 +113,7 @@
 </template>
 
 <script setup lang="ts">
-import model, { music } from "../model/index";
+import model from "../model/index";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 import { onBeforeUpdate, onMounted, onUnmounted, ref } from "vue";
