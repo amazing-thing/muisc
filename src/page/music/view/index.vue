@@ -343,17 +343,18 @@ model.likeList(uid).then((res) => {
 
 //喜欢歌曲
 const likeMusic = (like: boolean) => {
+  if (!document.cookie.match(/token/)) {
+    store.commit("showSnackbar", "需要登录");
+    return
+  }
   model.likeMusic(route.params.id, like).then((res) => {
-    if (document.cookie.match(/token/)) {
-      if (like) {
-        likeShow.value = true;
-      } else {
-        likeShow.value = false;
-      }
+    if (like) {
+      likeShow.value = true;
     } else {
-      store.commit("showSnackbar", "需要登录");
+      likeShow.value = false;
     }
-  });
+  }
+  );
 };
 
 onUnmounted(() => {
