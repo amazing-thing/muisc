@@ -330,16 +330,19 @@ const scrollText = () => {
 };
 
 //是否喜欢的歌曲
-model.likeList(uid).then((res) => {
-  ids.value = res.data.ids;
+if (document.cookie.match(/token/)) {
+    model.likeList(uid).then((res) => {
+    ids.value = res.data.ids;
 
-  for (let i = 0; i < ids.value.length; i++) {
-    if (ids.value[i] == route.params.id) {
-      likeShow.value = true;
-      break;
+    for (let i = 0; i < ids.value.length; i++) {
+      if (ids.value[i] == route.params.id) {
+        likeShow.value = true;
+        break;
+      }
     }
-  }
-});
+  });
+}
+
 
 //喜欢歌曲
 const likeMusic = (like: boolean) => {

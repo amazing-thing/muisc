@@ -9,7 +9,7 @@
       </var-col>
       <var-col :span="6">
         <div class="right">
-          <span class="more" @click="rightBtn">
+          <!-- <span class="more" @click="rightBtn">
             <span>
               <var-icon :name="iconName" v-if="iconPosition === 'left'" />
               <span
@@ -21,7 +21,7 @@
               >
               <var-icon :name="iconName" v-if="iconPosition === 'right'" />
             </span>
-          </span>
+          </span> -->
         </div>
       </var-col>
     </var-row>

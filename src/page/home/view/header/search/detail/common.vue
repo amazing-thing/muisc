@@ -1,8 +1,9 @@
 <!-- 综合 -->
 <template>
-  <var-loading type="circle" color="#2979ff" v-show="show1 || show2" />
-  <div class="container" v-show="!show1 && !show2">
-    <var-card subtitle="你可能感兴趣" v-if="hobby.length > 0">
+  <div class="common-container">
+    <var-loading type="circle" color="#2979ff" v-show="show1 || show2" />
+    <div class="container" v-show="!show1 && !show2">
+      <!-- <var-card subtitle="你可能感兴趣" v-if="hobby.length > 0">
       <template #description>
         <div class="hobby">
           <var-image :src="hobby[0]['picUrl']" width="64" height="64" radius="50%" fit="cover" />
@@ -19,51 +20,70 @@
           </div>
         </div>
       </template>
-    </var-card>
-    <var-card class="songCard">
-      <template #title>
-        <div class="title">单曲</div>
-      </template>
-      <template #description>
-        <div v-ripple="{ color: '#aaa' }" v-for="item in songData?.songs" :key="item['id']">
+      </var-card>-->
+      <var-card class="songCard">
+        <template #title>
+          <div class="title">单曲</div>
+        </template>
+        <template #description>
+          <div v-ripple="{ color: '#aaa' }" v-for="item in songData?.songs" :key="item['id']">
+            <wy-play-list-item-rc
+              class="song-class"
+              :showImgPlay="false"
+              :showImg="false"
+              :src="item['al']['picUrl']"
+              :name="item['name']"
+              :detail="item['ar']"
+              :album="item['al']['name']"
+              :privilege="item['privilege']"
+              albumPosition="bottom"
+              @click="musicRouter(item['id'])"
+            />
+          </div>
+          <div class="more" v-ripple="{ color: '#aaa' }" @click="More('1')">
+            <span>查看更多歌曲</span>
+            <var-icon name="chevron-right" />
+          </div>
+        </template>
+      </var-card>
+      <var-card class="playlistCard">
+        <template #title>
+          <div class="title">歌单</div>
+        </template>
+        <template #description>
+          <!-- <div v-ripple="{ color: '#aaa' }" v-for="item in songData?.songs" :key="item['id']">
           <wy-play-list-item-rc class="song-class" :showImgPlay="false" :showImg="false" :src="item['al']['picUrl']"
             :name="item['name']" :detail="item['ar']" :album="item['al']['name']" :privilege="item['privilege']"
             albumPosition="bottom" @click="musicRouter(item['id'])" />
-        </div>
-        <div class="more" v-ripple="{ color: '#aaa' }" @click="More('1')">
-          <span>查看更多歌曲</span>
-          <var-icon name="chevron-right" />
-        </div>
-      </template>
-    </var-card>
-    <var-card class="playlistCard">
-      <template #title>
-        <div class="title">歌单</div>
-      </template>
-      <template #description>
-        <!-- <div v-ripple="{ color: '#aaa' }" v-for="item in songData?.songs" :key="item['id']">
-          <wy-play-list-item-rc class="song-class" :showImgPlay="false" :showImg="false" :src="item['al']['picUrl']"
-            :name="item['name']" :detail="item['ar']" :album="item['al']['name']" :privilege="item['privilege']"
-            albumPosition="bottom" @click="musicRouter(item['id'])" />
-        </div> -->
-        <div class="playlist" v-if="playlistData.length>0">
-          <wy-play-list-new class="playlist-item" v-ripple="{ color: '#aaa' }" v-for="item in playlistData"
-            :key="item.id" :src="item.coverImgUrl" :name="item.name" :nickname="item.creator.nickname"
-            :trackCount="item.trackCount" :playCount="item.playCount" @click="click(item.id)" />
-        </div>
-        <div class="more" v-ripple="{ color: '#aaa' }" @click="More('1000')">
-          <span>{{playlistMoretext}}</span>
-          <var-icon name="chevron-right" />
-        </div>
-      </template>
-    </var-card>
+          </div>-->
+          <div class="playlist" v-if="playlistData.length > 0">
+            <wy-play-list-new
+              class="playlist-item"
+              v-ripple="{ color: '#aaa' }"
+              v-for="item in playlistData"
+              :key="item.id"
+              :src="item.coverImgUrl"
+              :name="item.name"
+              :nickname="item.creator.nickname"
+              :trackCount="item.trackCount"
+              :playCount="item.playCount"
+              @click="click(item.id)"
+            />
+          </div>
+          <div class="more" v-ripple="{ color: '#aaa' }" @click="More('1000')">
+            <span>{{ playlistMoretext }}</span>
+            <var-icon name="chevron-right" />
+          </div>
+        </template>
+      </var-card>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import model from "../../../../model/index";
-import { filterCount } from "../../../../../../utils/index";
+// import { filterCount } from "../../../../../../utils/index";
 import { useRouter } from "vue-router";
 import { checkMusic } from "../../../../../../utils/index";
 import { useStore } from "vuex";
@@ -138,6 +158,9 @@ const More = (str: string) => {
 </script>
 
 <style scoped>
+.common-container{
+   background-color: white;
+}
 .var-card {
   margin-top: 20px;
 }
