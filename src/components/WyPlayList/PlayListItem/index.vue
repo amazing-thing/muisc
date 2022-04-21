@@ -13,7 +13,7 @@
         <div class="pic">
           <var-image :src="require('../../../assets/triangle.png')" width="9" height="9" />
         </div>
-        <span style="margin-right: 3px">{{ filterCount(playCount) }}</span>
+        <span style="margin-right: 3px">{{ filterCount(Math.abs(playCount)) }}</span>
       </div>
     </div>
   </var-col>
