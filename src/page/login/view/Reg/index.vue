@@ -61,6 +61,11 @@ const reg = () => {
   register(props.phone, props.captcha, nickname.value).then(
     (res) => {
       if (res.status === 200) {
+        if (res.data.code === 400) {
+                tipReload(res.data.message);
+                showLoading.value = false;
+                return
+              }
         //注册成功
         loginCellphone(props.phone, props.captcha).then(
           (res) => {
@@ -81,9 +86,6 @@ const reg = () => {
       }
     },
     (err) => {
-      router.push({
-        name: "login",
-      });
       showLoading.value = false;
     }
   );
@@ -112,6 +114,7 @@ const reg = () => {
 .reg {
   margin: 15px;
 }
+
 .phone-reg {
   width: 100%;
   border: none;
